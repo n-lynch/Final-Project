@@ -1,0 +1,747 @@
+###This is a draft of a GUI that we attempted to create for the project. 
+
+
+import tkinter as tk
+#window = tk.Tk()
+master = tk.Tk()
+master.title("DRIP 0950")
+tk.Label(master, text="Enter your birth month (corresponding number, ex. 3 for March): ").grid(row=0)
+tk.Label(master, text ="Enter your birth day: ").grid(row=1)
+
+month=tk.Entry(master)
+day=tk.Entry(master)
+month.grid(row=0, column=1)
+day.grid(row=1, column=1)
+
+
+def find_sign():
+
+    month_per=int(str(month.get()))
+    day_per=int(str(day.get()))
+
+    ####newwindow=Toplevel(master)
+    newwindow.title("Find Your Sign")
+
+    if (day_per > 30) and (month_per == 4 or month_per == 6 or month_per == 9 or month_per == 11):
+      sign = 'not a valid date'
+    elif (day_per > 31) and (month_per == 1 or month_per == 3 or month_per == 5 or month_per == 7 or month_per == 8 or month_per == 10 or month_per == 12):
+      sign = 'not a valid date'
+    elif (day_per > 29 and month_per == 2):
+      sign = 'not a valid date'
+    elif ((month_per == 3) and (day_per >= 21)) or ((month_per == 4) and (day_per <= 19)):
+      sign = 'Aries'
+
+    elif ((month_per == 4) and (day_per >= 20)) or ((month_per == 5) and (day_per <= 20)):
+      sign = 'Taurus'
+
+    elif ((month_per == 5) and (day_per >= 21)) or ((month_per == 6) and (day_per <= 20)):
+      sign = 'Gemini'
+
+    elif ((month_per == 6) and (day_per >= 21)) or ((month_per == 7) and (day_per <= 22)):
+      sign = 'Cancer'
+
+    elif ((month_per == 7) and (day_per >= 23)) or ((month_per == 8) and (day_per <= 22)):
+      sign = 'Leo'
+
+    elif ((month_per == 8) and (day_per >= 23)) or ((month_per == 9) and (day_per <= 22)):
+      sign = 'Virgo'
+
+    elif ((month_per == 9) and (day_per >= 23)) or ((month_per == 10) and (day_per <= 22)):
+      sign = 'Libra'
+
+    elif ((month_per == 10) and (day_per >= 23)) or ((month_per == 11) and (day_per <= 21)):
+      sign = 'Scorpio'
+
+    elif ((month_per == 11) and (day_per >= 22)) or ((month_per == 12) and (day_per <= 21)):
+      sign = 'Sagittarius'
+
+    elif ((month_per == 12) and (day_per >= 22)) or ((month_per == 1) and (day_per <= 19)):
+      sign = 'Capricorn'
+
+    elif ((month_per == 1) and (day_per >= 20)) or ((month_per == 2) and (day_per <= 18)):
+      sign = 'Aquarius'
+
+    elif ((month_per == 2) and (day_per >= 19)) or ((month_per == 3) and (day_per <= 20)):
+      sign = 'Pisces'
+
+    else:
+      sign = 'not a valid date'
+
+    if sign == 'not a valid date':
+      Label(newwindow, text= "This is not a valid date.").pack()
+
+
+    # while sign == 'not a valid date': #Code will prompt the reader to "try again" if the first date they entered was invalid
+    #   month_str = input("I'm sorry, it doesn't look like date you entered was valid. Let's try again! Please enter the month's value again: ")
+    #   month_per = int(month_str) #Takes month string from the user and turns it into a number
+    #   day_str = input("Enter your day of birth again: ")
+    #   day_per = int(day_str) #Takes day string from the user and turns it into a number
+    #
+    #   if ((month_per == 3) and (day_per >= 21)) or ((month_per == 4) and (day_per <= 19)):
+    #     sign = 'Aries'
+    #
+    #   elif ((month_per == 4) and (day_per >= 20)) or ((month_per == 5) and (day_per <= 20)):
+    #     sign = 'Taurus'
+    #
+    #   elif ((month_per == 5) and (day_per >= 21)) or ((month_per == 6) and (day_per <= 20)):
+    #     sign = 'Gemini'
+    #
+    #   elif ((month_per == 6) and (day_per >= 21)) or ((month_per == 7) and (day_per <= 22)):
+    #    sign = 'Cancer'
+    #
+    #   elif ((month_per == 7) and (day_per >= 23)) or ((month_per == 8) and (day_per <= 22)):
+    #     sign = 'Leo'
+    #
+    #   elif ((month_per == 8) and (day_per >= 23)) or ((month_per == 9) and (day_per <= 22)):
+    #     sign = 'Virgo'
+    #
+    #   elif ((month_per == 9) and (day_per >= 23)) or ((month_per == 10) and (day_per <= 22)):
+    #     sign = 'Libra'
+    #
+    #   elif ((month_per == 10) and (day_per >= 23)) or ((month_per == 11) and (day_per <= 21)):
+    #     sign = 'Scorpio'
+    #
+    #   elif ((month_per == 11) and (day_per >= 22)) or ((month_per == 12) and (day_per <= 21)):
+    #     sign = 'Sagittarius'
+    #
+    #   elif ((month_per == 12) and (day_per >= 22)) or ((month_per == 1) and (day_per <= 19)):
+    #     sign = 'Capricorn'
+    #
+    #   elif ((month_per == 1) and (day_per >= 20)) or ((month_per == 2) and (day_per <= 18)):
+    #     sign = 'Aquarius'
+    #
+    #   elif ((month_per == 2) and (day_per >= 19)) or ((month_per == 3) and (day_per <= 20)):
+    #     sign = 'Pisces'
+    #
+    #   print()
+
+    #Different traits the signs possess in the form of lists
+    #Written by Naomi, took her ~1.5 hours
+    #Lists of traits
+
+    Aries_Traits = ['Adventurous', 'Energetic', 'Pioneering', 'Courageous', 'Enthusiastic',
+                    'Confident', 'Dynamic', 'Quick-witted', 'Selfish', 'Quick-tempered',
+                    'Impulsive', 'Impatient', 'Foolhardy', 'Daredevil']
+
+    Taurus_Traits = ['Patient', 'Reliable', 'Warm-harted', 'Loving', 'Persistent',
+                    'Determined', 'Placid', 'Security-loving', 'Jealous', 'Possessive',
+                    'Resentful', 'Inflexible', 'Self-indulgent', 'Greedy']
+
+    Gemini_Traits = ['Adaptable', 'Versatile', 'Communicative', 'Witty', 'Intellectual',
+                    'Eloquent', 'Youthful', 'Lively', 'Nervous', 'Tense',
+                    'Superficial', 'Inconsistent', 'Cunning', 'Inquisitive']
+
+    Cancer_Traits = ['Emotional', 'Loving', 'Intuitive', 'Imaginative', 'Shrewd',
+                    'Cautious', 'Protective', 'Sympathetic', 'Changeable', 'Moody',
+                    'Overemotional', 'Touchy', 'Clingy', 'Insecure']
+
+    Leo_Traits = ['Generous', 'Warmhearted', 'Creative', 'Enthusiastic', 'Tolerant',
+                    'Expansive', 'Faithful', 'Loving', 'Pompous', 'Patronizing',
+                    'Bossy', 'Interfering', 'Dogmatic', 'Possessive']
+
+    Virgo_Traits = ['Modest', 'Shy', 'Meticulous', 'Reliable', 'Practical',
+                    'Diligent', 'Intelligent', 'Analytical', 'Fussy', 'Overthinker',
+                    'Overcritical', 'Harsh', 'Perfectionist', 'Conservative']
+
+    Libra_Traits = ['Diplomatic', 'Urbane', 'Romantic', 'Charming', 'Easygoing',
+                    'Sociable', 'Idealistic', 'Peaceable', 'Indecisive', 'Changeable',
+                    'Gullible', 'Impressionable', 'Flirtatious', 'Self-indulgent']
+
+    Scorpio_Traits = ['Determined', 'Forceful', 'Emotional', 'Intuitive', 'Powerful',
+                    'Passionate', 'Exciting', 'Magnetic', 'Jealous', 'Resentful',
+                    'Compulsive', 'Obsessive', 'Secretive', 'Obstinate']
+
+    Sag_Traits = ['Optimistic', 'Freedom-loving', 'Jovial', 'Good-humored', 'Honest',
+                    'Straightforward', 'Intellectual', 'Philosophical', 'eeeeeee', 'Careless',
+                    'Irresponsible', 'Superficial', 'Impatient', 'Restless']
+
+    Cap_Traits = ['Practical', 'Prudent', 'Ambitious', 'Disciplined', 'Patient',
+                    'Careful', 'Humorous', 'Reserved', 'Pessimistic', 'Fatalistic',
+                    'Miserly', 'Resentful', 'Stoic', 'Rigid']
+
+    Aqua_Traits = ['Friendly', 'Humanitarian', 'Honest', 'Loyal', 'Original',
+                    'Inventive', 'Independent', 'Intellectual', 'Intractable', 'Contrary',
+                    'Perverse', 'Unpredictable', 'Unemotional', 'Detached']
+
+    Pisces_Traits = ['Imaginative', 'Sensitive', 'Compassionate', 'Kind', 'Selfless',
+                    'Unworldly', 'Intuitive', 'Sympathetic', 'Escapist', 'Idealistic',
+                    'Secretive', 'Vague', 'Impressionable', 'Fickle']
+
+    #Takes the sign that you were just given from the previous code and gives you your traits and artists
+    #Artists based on birth months
+    #Took Naomi ~2.5 hour to "research"
+
+    if sign == 'Aries':
+      tk.Label(master, text= "It looks like youre an Aries! Lets see what traits this sign typically posesses:").pack()
+      #Label(newwindow, text = *Aries_Traits, sep = ", ").pack()
+      Artists = ['Fergie', 'Elton John', 'Selena', 'Marvin Gaye', 'Lady Gaga']
+
+
+    elif sign == 'Taurus':
+      tk.Label(master, text= "It looks like youre a Taurus! Lets see what traits this sign typically posesses:").pack()
+      #Label(newwindow, text= *Taurus_Traits, sep = ", ").pack()
+      Artists = ['Adele', 'James Brown', 'Stevie Wonder', 'Enrique Iglesias', 'Cher']
+
+    elif sign == 'Gemini':
+      tk.Label(master, text= "It looks like youre a Gemini! Lets see what traits this sign typically posesses:").pack()
+      #Label(newwindow, text= *Gemini_Traits, sep = ", ")
+      Artists = ['Normani', 'Prince', 'Kali Uchis', 'Lionel Richie', 'Lauryn Hill']
+
+    elif sign == 'Cancer':
+      tk.Label(master, text="It looks like youre a Cancer! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Cancer_Traits, sep = ", ")
+      Artists = ['Ariana Grande', 'Jenni Rivera', 'George Michael', 'Cyndi Lauper', 'Luke Bryan']
+
+    elif sign == 'Leo':
+      tk.Label(master, text="It looks like youre a Leo! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Leo_Traits, sep = ", ")
+      Artists = ['Demi Lovato', 'Jennifer Lopez', 'Paul Anka', 'Whitney Houston', 'Mick Jagger']
+
+    elif sign == 'Virgo':
+      tk.Label(master, text="It looks like youre a Virgo! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Virgo_Traits, sep = ", ")
+      Artists = ['Marc Anthony', 'Michael Jackson', 'Beyonce', 'Freddie Mercury', 'Amy Winehouse']
+
+    elif sign == 'Libra':
+      tk.Label(master, text="It looks like youre a Libra! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Libra_Traits, sep = ", ")
+      Artists = ['Doja Cat', 'Bruno Mars', 'Gwen Stefani', 'Snoop Dogg', 'Bruce Springsteen']
+
+    elif sign == 'Scorpio':
+      tk.Label(master, text="It looks like youre a Scorpio! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Scorpio_Traits, sep = ", ")
+      Artists = ['Katy Perry', 'Frank Ocean', 'Lorde', 'Keith Urban', 'Brad Paisley']
+
+    elif sign == 'Sagittarius':
+      tk.Label(master, text="It looks like youre a Sagittarius! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Sag_Traits, sep = ", ")
+      Artists = ['Miley Cyrus', 'Frank Sinatra', 'Nicki Minaj', 'Jimi Hendrix', 'Britney Spears']
+
+    elif sign == 'Capricorn':
+      tk.Label(master, text="It looks like youre a Capricorn! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Cap_Traits, sep = ", ")
+      Artists = ['Zayn Malik', 'Aaliyah', 'Elvis Presley', 'Ricky Martin', 'Dolly Parton']
+
+    elif sign == 'Aquarius':
+      tk.Label(master, text="It looks like youre an Aquarius! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Aqua_Traits, sep = ", ")
+      Artists = ['Harry Styles', 'Shakira', 'Bob Marley', 'Alicia Keys', 'Phil Collins']
+
+    elif sign == 'Pisces':
+      tk.Label(master, text="It looks like youre a Pisces! Lets see what traits this sign typically posesses:")
+      #Label(newwindow, text=*Pisces_Traits, sep = ", ")
+      Artists = ['Rihanna', 'Carrie Underwood', 'Bon Jovi', 'Kesha', 'Bad Bunny']
+
+    newwindow.mainloop()
+    #print()
+
+    #tk.Label(master, text="Here are 5 artists that share your sign!")
+
+    #Label(newwindow, text=*Artists, sep = ", ").pack() #prints out your lists of artists in a comma-separated list
+    #print()
+
+    # #GIVE OPTION HERE TO LOOK AT A DIFFERENT SIGN OR LOOK AT AN ARTIST
+    # artist_name = input("Please pick an artist from this list to get more information on them (Write their name as seen on the list): ")
+    #
+    # #Artists and songs from Aries
+    # if sign == 'Aries':
+    #   if artist_name == 'Fergie': #if you're an ARIES and choose Fergie, you get the song Fergalicious and her specific birthday information
+    #     song = 'Fergalicious'
+    #     birthday = 'March 27, 1975'
+    #   elif artist_name == 'Elton John': #same logic, different artist
+    #     song = 'Tiny Dancer'
+    #     birthday = 'March 25, 1947'
+    #   elif artist_name == 'Selena':
+    #     song = 'Bidi Bidi Bom Bom'
+    #     birthday = 'April 16, 1971'
+    #   elif artist_name == 'Marvin Gaye':
+    #     song = 'Sexual Healing'
+    #     birthday = 'April 2, 1939'
+    #   elif artist_name == 'Lady Gaga':
+    #     song = 'Bad Romance'
+    #     birthday = 'March 28, 1986'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Fergie':
+    #       song = 'Fergalicious'
+    #       birthday = 'March 27, 1975'
+    #     elif artist_name == 'Elton John':
+    #       song = 'Tiny Dancer'
+    #       birthday = 'March 25, 1947'
+    #     elif artist_name == 'Selena':
+    #       song = 'Bidi Bidi Bom Bom'
+    #       birthday = 'April 16, 1971'
+    #     elif artist_name == 'Marvin Gaye':
+    #       song = 'Sexual Healing'
+    #       birthday = 'April 2, 1939'
+    #     elif artist_name == 'Lady Gaga':
+    #       song = 'Bad Romance'
+    #       birthday = 'March 28, 1986'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Taurus
+    # if sign == 'Taurus':
+    #   if artist_name == 'Adele':
+    #     song = 'Someone Like You'
+    #     birthday = 'May 5, 1988'
+    #   elif artist_name == 'James Brown':
+    #     song = 'Get Up Offa That Thing'
+    #     birthday = 'May 3, 1933'
+    #   elif artist_name == 'Stevie Wonder':
+    #     song = 'Isnt She Lovely'
+    #     birthday = 'May 13, 1950'
+    #   elif artist_name == 'Enrique Iglesias':
+    #     song = 'El Pérdon'
+    #     birthday = 'May 8, 1975'
+    #   elif artist_name == 'Cher':
+    #     song = 'If I Could Turn Back Time'
+    #     birthday = 'May 20, 1946'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Adele':
+    #       song = 'Someone Like You'
+    #       birthday = 'May 5, 1988'
+    #     elif artist_name == 'James Brown':
+    #       song = 'Get Up Offa That Thing'
+    #       birthday = 'May 3, 1933'
+    #     elif artist_name == 'Stevie Wonder':
+    #       song = 'Isnt She Lovely'
+    #       birthday = 'May 13, 1950'
+    #     elif artist_name == 'Enrique Iglesias':
+    #       song = 'El Pérdon'
+    #       birthday = 'May 8, 1975'
+    #     elif artist_name == 'Cher':
+    #       song = 'If I Could Turn Back Time'
+    #       birthday = 'May 20, 1946'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Gemini
+    # if sign == 'Gemini':
+    #   if artist_name == 'Normani':
+    #     song = 'Motivation'
+    #     birthday = 'May 31, 1996'
+    #   elif artist_name == 'Prince':
+    #     song = 'Purple Rain'
+    #     birthday = 'June 7, 1958'
+    #   elif artist_name == 'Paul McCartney':
+    #     song = 'Love and Let Die'
+    #     birthday = 'June 18, 1942'
+    #   elif artist_name == 'Lionel Richie':
+    #     song = 'Say You, Say Me'
+    #     birthday = 'June 20, 1949'
+    #   elif artist_name == 'Lauryn Hill':
+    #     song = 'Doo Wop (That Thing)'
+    #     birthday = 'May 26, 1975'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Normani':
+    #       song = 'Motivation'
+    #       birthday = 'May 31, 1996'
+    #     elif artist_name == 'Prince':
+    #       song = 'Purple Rain'
+    #       birthday = 'June 7, 1958'
+    #     elif artist_name == 'Paul McCartney':
+    #       song = 'Love and Let Die'
+    #       birthday = 'June 18, 1942'
+    #     elif artist_name == 'Lionel Richie':
+    #       song = 'Say You, Say Me'
+    #       birthday = 'June 20, 1949'
+    #     elif artist_name == 'Lauryn Hill':
+    #       song = 'Doo Wop (That Thing)'
+    #       birthday = 'May 26, 1975'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Cancer
+    # if sign == 'Cancer':
+    #   if artist_name == 'Ariana Grande':
+    #     song = 'thank u, next'
+    #     birthday = 'June 26, 1993'
+    #   elif artist_name == 'Jenni Rivera':
+    #     song = 'Ya Lo Sé'
+    #     birthday = 'July 2, 1969'
+    #   elif artist_name == 'George Michael':
+    #     song = 'Careless Whisper'
+    #     birthday = 'June 25, 1963'
+    #   elif artist_name == 'Cyndi Lauper':
+    #     song = 'Girls Just Want to Have Fun'
+    #     birthday = 'June 22, 1953'
+    #   elif artist_name == 'Luke Bryan':
+    #     song = 'Play It Again'
+    #     birthday = 'July 17, 1976'
+    #   else:
+    #     print('Im sorry, this artist is not in your list.')
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Ariana Grande':
+    #       song = 'thank u, next'
+    #       birthday = 'June 26, 1993'
+    #     elif artist_name == 'Jenni Rivera':
+    #       song = 'Ya Lo Sé'
+    #       birthday = 'July 2, 1969'
+    #     elif artist_name == 'George Michael':
+    #       song = 'Careless Whisper'
+    #       birthday = 'June 25, 1963'
+    #     elif artist_name == 'Cyndi Lauper':
+    #       song = 'Girls Just Want to Have Fun'
+    #       birthday = 'June 22, 1953'
+    #     elif artist_name == 'Luke Bryan':
+    #       song = 'Play It Again'
+    #       birthday = 'July 17, 1976'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Leo
+    # if sign == 'Leo':
+    #   if artist_name == 'Demi Lovato':
+    #     song = 'Sorry Not Sorry'
+    #     birthday = 'August 20, 1992'
+    #   elif artist_name == 'Jennifer Lopez':
+    #     song = 'Lets Get Loud'
+    #     birthday = 'July 24, 1969'
+    #   elif artist_name == 'Paul Anka':
+    #     song = 'Put Your Head on My Shoulder'
+    #     birthday = 'July 30, 1941'
+    #   elif artist_name == 'Whitney Houston':
+    #     song = 'I Wanna Dance with Somebody'
+    #     birthday = 'August 9, 1963'
+    #   elif artist_name == 'Mick Jagger':
+    #     song = 'Old Habits Die Hard'
+    #     birthday = 'July 26, 1943'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Demi Lovato':
+    #       song = 'Sorry Not Sorry'
+    #       birthday = 'August 20, 1992'
+    #     elif artist_name == 'Jennifer Lopez':
+    #       song = 'Lets Get Loud'
+    #       birthday = 'July 24, 1969'
+    #     elif artist_name == 'Paul Anka':
+    #       song = 'Put Your Head on My Shoulder'
+    #       birthday = 'July 30, 1941'
+    #     elif artist_name == 'Whitney Houston':
+    #       song = 'I Wanna Dance with Somebody'
+    #       birthday = 'August 9, 1963'
+    #     elif artist_name == 'Mick Jagger':
+    #       song = 'Old Habits Die Hard'
+    #       birthday = 'July 26, 1943'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Virgo
+    # if sign == 'Virgo':
+    #   if artist_name == 'Marc Anthony':
+    #     song = 'Vivir Mi Vida'
+    #     birthday = 'September 16, 1968'
+    #   elif artist_name == 'Michael Jackson':
+    #     song = 'Billie Jean'
+    #     birthday = 'August 29, 1958'
+    #   elif artist_name == 'Beyonce':
+    #     song = 'Love On Top'
+    #     birthday = 'September 4, 1981'
+    #   elif artist_name == 'Freddie Mercury':
+    #     song = 'The Great Pretender'
+    #     birthday = 'September 5, 1946'
+    #   elif artist_name == 'Amy Winehouse':
+    #     song = 'Back To Black'
+    #     birthday = 'September 14, 1983'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Marc Anthony':
+    #       song = 'Vivir Mi Vida'
+    #       birthday = 'September 16, 1968'
+    #     elif artist_name == 'Michael Jackson':
+    #       song = 'Billie Jean'
+    #       birthday = 'August 29, 1958'
+    #     elif artist_name == 'Beyonce':
+    #       song = 'Love On Top'
+    #       birthday = 'September 4, 1981'
+    #     elif artist_name == 'Freddie Mercury':
+    #       song = 'The Great Pretender'
+    #       birthday = 'September 5, 1946'
+    #     elif artist_name == 'Amy Winehouse':
+    #       song = 'Back To Black'
+    #       birthday = 'September 14, 1983'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Libra
+    # if sign == 'Libra':
+    #   if artist_name == 'Doja Cat':
+    #     song = 'Say So'
+    #     birthday = 'October 21, 1995'
+    #   elif artist_name == 'Bruno Mars':
+    #     song = 'Leave The Door Open'
+    #     birthday = 'October 8, 1985'
+    #   elif artist_name == 'Gwen Stefani':
+    #     song = 'Hollaback Girl'
+    #     birthday = 'October 3, 1969'
+    #   elif artist_name == 'Snoop Dogg':
+    #     song = 'Drop It Like Its Hot'
+    #     birthday = 'October 20, 1971'
+    #   elif artist_name == 'Bruce Springsteen':
+    #     song = 'Dancing In The Dark'
+    #     birthday = 'September 23, 1949'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Doja Cat':
+    #       song = 'Say So'
+    #       birthday = 'October 21, 1995'
+    #     elif artist_name == 'Bruno Mars':
+    #       song = 'Leave The Door Open'
+    #       birthday = 'October 8, 1985'
+    #     elif artist_name == 'Gwen Stefani':
+    #       song = 'Hollaback Girl'
+    #       birthday = 'October 3, 1969'
+    #     elif artist_name == 'Snoop Dogg':
+    #       song = 'Drop It Like Its Hot'
+    #       birthday = 'October 20, 1971'
+    #     elif artist_name == 'Bruce Springsteen':
+    #       song = 'Dancing In The Dark'
+    #       birthday = 'September 23, 1949'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Scorpio
+    # if sign == 'Scorpio':
+    #   if artist_name == 'Katy Perry':
+    #     song = 'The One That Got Away'
+    #     birthday = 'October 25, 1984'
+    #   elif artist_name == 'Frank Ocean':
+    #     song = 'Thinkin Bout You'
+    #     birthday = 'October 28, 1987'
+    #   elif artist_name == 'Lorde':
+    #     song = 'Royals'
+    #     birthday = 'November 7, 1996'
+    #   elif artist_name == 'Keith Urban':
+    #     song = 'Blue Aint Your Color'
+    #     birthday = 'October 26, 1967'
+    #   elif artist_name == 'Brad Paisley':
+    #     song = 'Shes Everything'
+    #     birthday = 'October 28, 1972'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Katy Perry':
+    #       song = 'The One That Got Away'
+    #       birthday = 'October 25, 1984'
+    #     elif artist_name == 'Frank Ocean':
+    #       song = 'Thinkin Bout You'
+    #       birthday = 'October 28, 1987'
+    #     elif artist_name == 'Lorde':
+    #       song = 'Royals'
+    #       birthday = 'November 7, 1996'
+    #     elif artist_name == 'Keith Urban':
+    #       song = 'Blue Aint Your Color'
+    #       birthday = 'October 26, 1967'
+    #     elif artist_name == 'Brad Paisley':
+    #       song = 'Shes Everything'
+    #       birthday = 'October 28, 1972'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Sagittarius
+    # if sign == 'Sagittarius':
+    #   if artist_name == 'Miley Cyrus':
+    #     song = 'Midnight Sky'
+    #     birthday = 'November 23, 1992'
+    #   elif artist_name == 'Frank Sinatra':
+    #     song = 'My Way'
+    #     birthday = 'December 12, 1915'
+    #   elif artist_name == 'Nicki Minaj':
+    #     song = 'Starships'
+    #     birthday = 'December 8, 1982'
+    #   elif artist_name == 'Jimi Hendrix':
+    #     song = 'All Along the Watchtower'
+    #     birthday = 'November 27, 1942'
+    #   elif artist_name == 'Britney Spears':
+    #     song = 'Toxic'
+    #     birthday = 'December 2, 1981'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Miley Cyrus':
+    #       song = 'Midnight Sky'
+    #       birthday = 'November 23, 1992'
+    #     elif artist_name == 'Frank Sinatra':
+    #       song = 'My Way'
+    #       birthday = 'December 12, 1915'
+    #     elif artist_name == 'Nicki Minaj':
+    #       song = 'Starships'
+    #       birthday = 'December 8, 1982'
+    #     elif artist_name == 'Jimi Hendrix':
+    #       song = 'All Along the Watchtower'
+    #       birthday = 'November 27, 1942'
+    #     elif artist_name == 'Britney Spears':
+    #       song = 'Toxic'
+    #       birthday = 'December 2, 1981'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Capricorn
+    # if sign == 'Capricorn':
+    #   if artist_name == 'Zayn Malik':
+    #     song = 'PILLOWTALK'
+    #     birthday = 'January 12, 1993'
+    #   elif artist_name == 'Aaliyah':
+    #     song = 'Im So Into You'
+    #     birthday = 'January 16, 1979'
+    #   elif artist_name == 'Elvis Presley':
+    #     song = 'Jailhouse Rock'
+    #     birthday = 'January 8, 1935'
+    #   elif artist_name == 'Ricky Martin':
+    #     song = 'Vente Pa Ca'
+    #     birthday = 'December 24, 1971'
+    #   elif artist_name == 'Dolly Parton':
+    #     song = 'Jolene'
+    #     birthday = 'January 19, 1946'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Zayn Malik':
+    #       song = 'PILLOWTALK'
+    #       birthday = 'January 12, 1993'
+    #     elif artist_name == 'Aaliyah':
+    #       song = 'Im So Into You'
+    #       birthday = 'January 16, 1979'
+    #     elif artist_name == 'Elvis Presley':
+    #       song = 'Jailhouse Rock'
+    #       birthday = 'January 8, 1935'
+    #     elif artist_name == 'Ricky Martin':
+    #       song = 'Vente Pa Ca'
+    #       birthday = 'December 24, 1971'
+    #     elif artist_name == 'Dolly Parton':
+    #       song = 'Jolene'
+    #       birthday = 'January 19, 1946'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Aquarius
+    # if sign == 'Aquarius':
+    #   if artist_name == 'Harry Styles':
+    #     song = 'Adore You'
+    #     birthday = 'February 1, 1994'
+    #   elif artist_name == 'Shakira':
+    #     song = 'Hips Dont Lie'
+    #     birthday = 'February 2, 1977'
+    #   elif artist_name == 'Bob Marley':
+    #     song = 'Could You Be Loved'
+    #     birthday = 'February 6, 1945'
+    #   elif artist_name == 'Alicia Keys':
+    #     song = 'No One'
+    #     birthday = 'January 25, 1981'
+    #   elif artist_name == 'Phil Collins':
+    #     song = 'You Cant Hurry Love'
+    #     birthday = 'January 30, 1951'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Harry Styles':
+    #       song = 'Adore You'
+    #       birthday = 'February 1, 1994'
+    #     elif artist_name == 'Shakira':
+    #       song = 'Hips Dont Lie'
+    #       birthday = 'February 2, 1977'
+    #     elif artist_name == 'Bob Marley':
+    #       song = 'Could You Be Loved'
+    #       birthday = 'February 6, 1945'
+    #     elif artist_name == 'Alicia Keys':
+    #       song = 'No One'
+    #       birthday = 'January 25, 1981'
+    #     elif artist_name == 'Phil Collins':
+    #       song = 'You Cant Hurry Love'
+    #       birthday = 'January 30, 1951'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #Artists and songs from Pisces
+    # if sign == 'Pisces':
+    #   if artist_name == 'Rihanna':
+    #     song = 'Love On The Brain'
+    #     birthday = 'February 20, 1988'
+    #   elif artist_name == 'Carrie Underwood':
+    #     song = 'Church Bells'
+    #     birthday = 'March 10, 1983'
+    #   elif artist_name == 'Bon Jovi':
+    #     song = 'You Give Love A Bad Name'
+    #     birthday = 'March 18, 1970'
+    #   elif artist_name == 'Kesha':
+    #     song = 'Die Young'
+    #     birthday = 'March 1, 1987'
+    #   elif artist_name == 'Bad Bunny':
+    #     song = 'DAKITI'
+    #     birthday = 'March 10, 1994'
+    #   else:
+    #     artist_name = 'No artist'
+    #
+    #   while artist_name == 'No artist': #while loop prompts the user to "try again" if their first artist didn't work
+    #     artist_name = input('Im sorry, this artist is not in your list. Please type in an artist in this list as it is spelled: ')
+    #
+    #     if artist_name == 'Rihanna':
+    #       song = 'Love On The Brain'
+    #       birthday = 'February 20, 1988'
+    #     elif artist_name == 'Carrie Underwood':
+    #       song = 'Church Bells'
+    #       birthday = 'March 10, 1983'
+    #     elif artist_name == 'Bon Jovi':
+    #       song = 'You Give Love A Bad Name'
+    #       birthday = 'March 18, 1970'
+    #     elif artist_name == 'Kesha':
+    #       song = 'Die Young'
+    #       birthday = 'March 1, 1987'
+    #     elif artist_name == 'Bad Bunny':
+    #       song = 'DAKITI'
+    #       birthday = 'March 10, 1994'
+    #     else:
+    #       artist_name = 'No artist'
+    #
+    # #artist_picture = artist_name.replace(' ', '_') + '.jpeg'
+    #
+    # print()
+    # print('Youve chosen ' + artist_name + ' - Their birthday is on ' + birthday + ', making them the same sign as you! A popular song of theirs is \'' + song + '.\'')
+    # print()
+
+
+enter = tk.Button(master, command=find_sign, text ="Enter", bg="#8ec8d1", fg = "black")
+enter.grid(row=2, column=1)
+master.mainloop()
